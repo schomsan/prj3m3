@@ -1,0 +1,21 @@
+.vh-full {
+    min-height: 100vh;
+}
+
+.film-placeholder {
+    width: 160px;
+    height:250px;
+    background-color:black;
+    border-radius: 2px;
+}
+
+.one-film-placeholder {
+    width: 300px;
+    height:400px;
+    background-color:black;
+    border-radius: 2px;
+}
+
+.film-info {
+    max-width: 400px;
+}
