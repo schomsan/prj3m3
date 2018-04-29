@@ -12,7 +12,7 @@
         <div class="container p-3">
             <div class="nav-scroller  mb-2">
                     <nav class="nav d-flex justify-content-between">
-                    <a class="p-2 text-muted" href="index.php">Movies</a>
+                    <a class="p-2 text-muted" href="movie.php">Movies</a>
                     <a class="p-2 text-muted" href="profiles.php">Profiles</a>
                     <a class="p-2 text-muted" href="edit_movie.php">Edit Existing Movie</a>
                     <a class="p-2 text-muted" href="add_movie.php">Add a New Movie</a>
