@@ -3,7 +3,7 @@
 require_once 'auth/config.php';
 
 // Define variables and initialize with empty values
-$username = $first_name = $last_name = $password = $confirm_password = "";
+$username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
@@ -65,15 +65,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, fist_name, last_name) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password, $param_first_name, $param_last_name);
+            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
 
             // Set parameters
-            $param_first_name = $first_name;
-            $param_last_name = $last_name;
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
 
@@ -111,14 +109,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-          <div class="form-group">
-                <label>First Name</label>
-                <input type="text" name="first_name"class="form-control" value="<?php echo $first_name; ?>">
-            </div>
-            <div class="form-group">
-                <label>Last Name</label>
-                <input type="text" name="last_name"class="form-control" value="<?php echo $last_name; ?>">
-            </div>
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
                 <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
